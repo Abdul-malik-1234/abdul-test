@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh '''
                     # If package.json or Dockerfile changed, rebuilds. Otherwise, just restarts or applies changes.
+                    cd my-app
                     docker compose up -d --build
                 '''
             }
