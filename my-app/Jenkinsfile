@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Pulls code from your GitHub repository
+                checkout scm
+            }
+        }
+
+        stage('Build and Deploy with Docker Compose') {
+            steps {
+                sh '''
+                    # Stop any existing container to prevent port conflicts
+                    docker compose down || true
+
+                    # Build the new image and start the container in detached mode (-d)
+                    docker compose up -d --build
+                '''
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline succeeded! Your Vite + React app is up and running in the background.'
+        }
+        failure {
+            echo 'Pipeline failed! Check the console output for errors.'
+        }
+    }
+}

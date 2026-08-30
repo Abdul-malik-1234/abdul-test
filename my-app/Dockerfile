@@ -1,4 +1,4 @@
-FROM node:20-apline
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -11,5 +11,5 @@ COPY . .
 
 EXPOSE 5173
 
-RUN ["npm","run","dev","--","--host"]
+CMD ["npm","run","dev","--","--host"]
 
