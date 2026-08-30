@@ -4,18 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Pulls code from your GitHub repository
+                // Pulls the latest pushed code from GitHub
                 checkout scm
             }
         }
 
-        stage('Build and Deploy with Docker Compose') {
+        stage('Deploy / Restart Container') {
             steps {
                 sh '''
-                    # Stop any existing container to prevent port conflicts
-                    docker compose down || true
-
-                    # Build the new image and start the container in detached mode (-d)
+                    # If package.json or Dockerfile changed, rebuilds. Otherwise, just restarts or applies changes.
                     docker compose up -d --build
                 '''
             }
@@ -24,10 +21,7 @@ pipeline {
     
     post {
         success {
-            echo 'Pipeline succeeded! Your Vite + React app is up and running in the background.'
-        }
-        failure {
-            echo 'Pipeline failed! Check the console output for errors.'
+            echo 'Changes deployed successfully! Refresh your browser or watch live changes.'
         }
     }
 }
