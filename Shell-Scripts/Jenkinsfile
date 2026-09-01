@@ -26,6 +26,11 @@ pipeline {
 	   steps {
 		sh 'cd Shell-Scripts && ./secondscript.sh'
            }
+        }
+        stage('Stage3:Run Shell script 3') {
+	  steps {
+		sh 'cd Shell-Scripts && ./thirdscript.sh'
+          }
         } 
     }
 }
