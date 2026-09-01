@@ -16,8 +16,7 @@ pipeline {
         stage('Run Shell Script') {
             steps {
                 // Execute your shell script (assumes your script file is named script.sh)
-                cd 'Shell-Scripts'
-		sh './firstscript.sh'
+		sh 'cd Shell-Scripts && ./firstscript.sh'
                 
                 // OR run inline commands directly:
                 // sh 'echo "Running commands from my git repo!"'
