@@ -34,7 +34,7 @@ pipeline {
         }
 	stage('Stage4:Run Shell script 4') {
 	  steps {
-	       sh 'cd Shell-Scripts && ./fourthscript.sh'
+	       sh 'cd Shell-Scripts && ./fourthscript.sh 1 10'
 	  }
 	} 
     }
