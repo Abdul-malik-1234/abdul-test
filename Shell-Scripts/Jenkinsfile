@@ -1,18 +1,6 @@
 pipeline {
     agent any
     stages {
-        //stage('Checkout') {
-           // steps {
-                // Automatically checks out your repository using Git SCM
-                // (Replace branch name if yours is 'main' or something else)
-             //   checkout([
-           //         $class: 'GitSCM', 
-         //           branches: [[name: '*/master']], 
-       //             userRemoteConfigs: [[url: 'https://github.com/your-username/your-repo.git']]
-     //           ])
-   //         }
- //       }
- 
         stage('Stage1:Run Shell script 1') {
             steps {
                 // Execute your shell script (assumes your script file is named script.sh)
@@ -27,6 +15,7 @@ pipeline {
 		sh 'cd Shell-Scripts && ./secondscript.sh'
            }
         }
+
         stage('Stage3:Run Shell script 3') {
 	  steps {
 		sh 'cd Shell-Scripts && ./thirdscript.sh'
@@ -39,3 +28,4 @@ pipeline {
 	} 
     }
 }
+
