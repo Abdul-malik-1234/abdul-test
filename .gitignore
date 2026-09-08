@@ -53,3 +53,4 @@ pnpm-debug.log*
 # Optional: if you use coverage tools
 coverage/
 
+awslogin.pem

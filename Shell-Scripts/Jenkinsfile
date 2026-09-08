@@ -25,6 +25,11 @@ pipeline {
 	  steps {
 	       sh 'cd Shell-Scripts && ./fourthscript.sh 1 10'
 	  }
+	}
+	stage('Stage5: Run last shell script') {
+	 steps {
+		sh 'cd Shell-Scripts && ./fifthscript.sh'
+	 }
 	} 
     }
 }
